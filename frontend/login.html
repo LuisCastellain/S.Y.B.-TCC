@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | SYB</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+      background: #fff;
+    }
+    .btn-purple {
+      background: #7b2ff2;
+      color: #fff;
+      border: none;
+    }
+    .btn-purple:hover {
+      background: #5f1bbd;
+    }
+    .form-label {
+      color: #7b2ff2;
+      font-weight: bold;
+    }
+    .nav-link, .navbar-brand {
+      color: #7b2ff2 !important;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body style="min-height:100vh; background:linear-gradient(135deg, #2d014d 0%, #7b2ff2 100%);">
+  <div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-4" style="width:100%; max-width:370px; background:#1a002b; border:none; box-shadow:0 0 32px #2d014d44;">
+      <h2 class="text-center mb-4" style="color:#c77dff; font-weight:700;">SYB</h2>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="senha" class="form-label">Senha</label>
+          <input type="password" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="senha" required>
+        </div>
+        <button type="submit" class="btn w-100" style="background:#7b2ff2; color:#fff; font-weight:600;">Entrar</button>
+      </form>
+      <div class="text-center mt-3" id="loginLinks">
+        <a href="#" id="showRegister" style="color:#c77dff; font-weight:500;">Criar conta</a>
+      </div>
+      <form id="registerForm" style="display:none; margin-top:0px;">
+        <div class="mb-3">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="nome">
+        </div>
+        <div class="mb-3">
+          <label for="emailRegister" class="form-label">E-mail</label>
+          <input type="email" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="emailRegister">
+        </div>
+        <div class="mb-3">
+          <label for="senhaRegister" class="form-label">Senha</label>
+          <input type="password" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="senhaRegister">
+        </div>
+        <button type="submit" class="btn w-100" style="background:#7b2ff2; color:#fff; font-weight:600;">Cadastrar</button>
+        <div class="text-center mt-3" id="registerLinks">
+          <a href="#" id="showLogin" style="color:#c77dff; font-weight:500;">Já tenho conta</a>
+        </div>
+      </form>
+      <div id="msg" class="mt-3 text-center"></div>
+    </div>
+  </div>
+  <script>
+    // Alterna entre login e cadastro
+    document.getElementById('showRegister').onclick = function() {
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('registerForm').style.display = 'block';
+      document.getElementById('loginLinks').style.display = 'none';
+    };
+    document.getElementById('showLogin').onclick = function() {
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('loginLinks').style.display = 'block';
+    };
+    // Login
+    document.getElementById('loginForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const senha = document.getElementById('senha').value;
+      const res = await fetch('http://localhost:3001/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('usuario', JSON.stringify(data.usuario));
+        window.location.href = 'home.html';
+      } else {
+        document.getElementById('msg').innerHTML = `<span style='color:#ff7eb9;'>${data.error}</span>`;
+      }
+    };
+    // Cadastro
+    document.getElementById('registerForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('emailRegister').value;
+      const senha = document.getElementById('senhaRegister').value;
+      const res = await fetch('http://localhost:3001/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, senha })
+      });
+      const data = await res.json();
+      if (res.ok) {
+        document.getElementById('msg').innerHTML = `<span style='color:#7bffb4;'>${data.message}</span>`;
+        document.getElementById('registerForm').reset();
+        setTimeout(() => {
+          document.getElementById('registerForm').style.display = 'none';
+          document.getElementById('loginForm').style.display = 'block';
+          document.getElementById('loginLinks').style.display = 'block';
+        }, 1500);
+      } else {
+        document.getElementById('msg').innerHTML = `<span style='color:#ff7eb9;'>${data.error}</span>`;
+      }
+    };
+  </script>
+</body>
+</html>
