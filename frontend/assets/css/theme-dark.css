@@ -1,0 +1,101 @@
+/* =====================
+   SYB - Tema Escuro
+   ===================== */
+:root.dark-theme {
+  --syb-bg: #1e1336;
+  --syb-text: #f4fafa;
+  --syb-hero-bg: linear-gradient(135deg, #1e1336 0%, #532a71 100%);
+  --syb-navbar-bg: #1e1336; /* cor original escura da navbar */
+  --syb-navbar-link: #ae6bdb;
+  --syb-navbar-link-hover: #a890c5;
+  --syb-card-bg: #2a223f;
+  --syb-card-shadow: 0 4px 30px rgba(30,19,54,0.18);
+  --syb-btn-bg: #ae6bdb;
+  --syb-btn-text: #fff;
+  --syb-divider: rgba(255,255,255,0.1);
+}
+
+body.dark-theme, html.dark-theme {
+  background: #532a71 !important; /* fundo roxo-ameixa em toda a página */
+  color: var(--syb-text);
+  /* Remove overlay de animação se houver */
+}
+body.dark-theme .theme__fill {
+  display: none !important;
+  background: none !important;
+  pointer-events: none !important;
+}
+
+body.dark-theme .hero-section {
+  background: #532a71 !important; /* roxo-ameixa intenso */
+  color: var(--syb-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body.dark-theme .hero-logo-dark {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem auto;
+}
+body.dark-theme .hero-logo-light {
+  display: none !important;
+}
+
+body.dark-theme .modern-navbar {
+  background: #1e1336 !important; /* cor original SYB para navbar escura */
+  box-shadow: 0 2px 12px rgba(30,19,54,0.18);
+}
+body.dark-theme .navbar-link {
+  color: #ae6bdb;
+}
+body.dark-theme .navbar-link.active,
+body.dark-theme .navbar-link:hover {
+  color: #fff;
+  background: #9855a2;
+}
+body.dark-theme .navbar-logo-text {
+  color: #ae6bdb;
+}
+
+body.dark-theme .navbar-link {
+  color: var(--syb-navbar-link);
+}
+body.dark-theme .navbar-link:hover,
+body.dark-theme .navbar-link.active {
+  color: var(--syb-navbar-link-hover);
+  background: rgba(174,107,219,0.15);
+}
+
+body.dark-theme .navbar-divider {
+  background: var(--syb-divider);
+}
+
+body.dark-theme .card {
+  background: var(--syb-card-bg);
+  box-shadow: var(--syb-card-shadow);
+}
+
+body.dark-theme .navbar-btn,
+body.dark-theme .navbar-cadastro {
+  background: var(--syb-btn-bg);
+  color: var(--syb-btn-text);
+}
+
+body.dark-theme .mobile-menu {
+  background: var(--syb-navbar-bg);
+}
+
+body.dark-theme .mobile-link {
+  color: var(--syb-text);
+  border-bottom: 1px solid var(--syb-divider);
+}
+
+body.dark-theme .hero-logo-dark {
+  display: block;
+}
+body.dark-theme .hero-logo-light {
+  display: none;
+}

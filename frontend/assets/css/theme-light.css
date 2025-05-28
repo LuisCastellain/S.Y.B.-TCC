@@ -1,0 +1,74 @@
+/* =====================
+   SYB - Tema Claro
+   ===================== */
+:root {
+  --syb-bg: #f4fafa;
+  --syb-text: #1e1336;
+  --syb-hero-bg: #a890c5;
+  --syb-navbar-bg: #fff;
+  --syb-navbar-link: #8761a1;
+  --syb-navbar-link-hover: #ae6bdb;
+  --syb-card-bg: #fff;
+  --syb-card-shadow: 0 4px 30px rgba(170,102,180,0.09);
+  --syb-btn-bg: #ae6bdb;
+  --syb-btn-text: #fff;
+  --syb-divider: rgba(0,0,0,0.08);
+}
+
+body {
+  background: var(--syb-bg);
+  color: var(--syb-text);
+}
+
+.hero-section {
+  background: var(--syb-hero-bg);
+  color: var(--syb-text);
+}
+
+.modern-navbar {
+  background: var(--syb-navbar-bg);
+  box-shadow: var(--syb-card-shadow);
+}
+
+.navbar-link {
+  color: var(--syb-navbar-link);
+}
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--syb-navbar-link-hover);
+  background: rgba(174,107,219,0.10);
+}
+
+.navbar-divider {
+  background: var(--syb-divider);
+}
+
+.card {
+  background: var(--syb-card-bg);
+  box-shadow: var(--syb-card-shadow);
+}
+
+.navbar-btn,
+.navbar-cadastro {
+  background: var(--syb-btn-bg);
+  color: var(--syb-btn-text);
+}
+
+.mobile-menu {
+  background: var(--syb-navbar-bg);
+}
+
+.mobile-link {
+  color: var(--syb-text);
+  border-bottom: 1px solid var(--syb-divider);
+}
+
+.hero-logo-dark {
+  display: none;
+}
+.hero-logo-light {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 1.5rem auto;
+}

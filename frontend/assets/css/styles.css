@@ -1,0 +1,202 @@
+:root {
+  --syb-roxo-base: #8761a1;
+  --syb-lilas-suave: #a890c5;
+  --syb-roxo-vibrante: #ae6bdb;
+  --syb-ameixa-intensa: #532a71;
+  --syb-noturno-absoluto: #1e1336;
+  --syb-neve-lilas: #f4fafa;
+  --syb-cinza-chumbo: #2a223f;
+}
+
+/* Hero Section SYB - Estrutura e contraste garantido */
+.hero-section {
+    margin-top: 64px; /* altura da navbar fixa */
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--syb-roxo-base);
+    color: var(--syb-neve-lilas);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+body.dark-theme .hero-section {
+    background: linear-gradient(135deg, var(--syb-noturno-absoluto) 0%, var(--syb-ameixa-intensa) 100%);
+    color: var(--syb-neve-lilas);
+}
+body {
+    color: var(--syb-noturno-absoluto);
+    background: var(--syb-neve-lilas) !important;
+}
+body.dark-theme {
+    color: var(--syb-neve-lilas);
+    background: var(--syb-noturno-absoluto);
+}
+
+.hero-content {
+    z-index: 2;
+    position: relative;
+    animation: fadeInUp 1.2s cubic-bezier(.7,-0.01,.4,1);
+}
+.hero-section img {
+    width: 120px;
+    max-width: 40vw;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));
+}
+.hero-logo-dark,
+.hero-logo-light {
+    display: none;
+}
+body.dark-theme .hero-logo-dark {
+    display: block;
+}
+body.dark-theme .hero-logo-light {
+    display: none;
+}
+body:not(.dark-theme) .hero-logo-dark {
+    display: none;
+}
+body:not(.dark-theme) .hero-logo-light {
+    display: block;
+}
+
+
+.hero-section h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: #fff;
+    letter-spacing: 0.04em;
+}
+.hero-slogan {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #f6f6f6;
+    margin-bottom: 0;
+}
+@media (max-width: 700px) {
+    .hero-section h1 {
+        font-size: 1.5rem;
+    }
+    .hero-section img {
+        width: 80px;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fontes modernas para letreiros/títulos */
+.navbar-logo-text,
+.hero-section h1,
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em;
+}
+body {
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+/* --- Blocos inspirados no layout WACS --- */
+.syb-sobre-bloco {
+  background: linear-gradient(135deg, #ae6bdb 0%, #532a71 100%);
+  color: #fff;
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+}
+.syb-sobre-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.syb-sobre-bloco h2 {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 900;
+}
+.syb-sobre-bloco p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.syb-funcionalidades-bloco {
+  background: #fff;
+  color: #532a71;
+  padding: 3rem 0 2rem 0;
+  text-align: center;
+}
+.syb-funcionalidades-bloco h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 900;
+}
+.syb-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+.syb-card {
+  background: #f6f6f6;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(80,0,150,0.08);
+  padding: 2rem 1.5rem;
+  max-width: 260px;
+  min-width: 220px;
+  text-align: center;
+  transition: transform 0.22s, box-shadow 0.22s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.syb-card i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ae6bdb;
+}
+.syb-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.syb-card p {
+  font-size: 1rem;
+  color: #532a71;
+}
+.syb-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(80,0,150,0.16);
+}
+@media (max-width: 900px) {
+  .syb-cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* --- Divisor de onda entre seções --- */
+.wave-divider {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  margin-top: -2px;
+  overflow: hidden;
+  z-index: 2;
+}
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
