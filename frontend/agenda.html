@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agenda | SYB</title>
   <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/agenda-custom.css">
   <link rel="stylesheet" href="assets/css/navbar-modern.css">
   <link rel="stylesheet" href="assets/css/theme-switch.css">
   <link rel="stylesheet" href="assets/css/theme-light.css" id="theme-light-css">
@@ -13,7 +14,7 @@
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%);
+
       min-height: 100vh;
     }
     .navbar, .navbar-brand {
@@ -48,7 +49,7 @@
     }
   </style>
 </head>
-<body style="min-height:100vh; background:linear-gradient(135deg, #2d014d 0%, #7b2ff2 100%);">
+<body class="syb-agenda-bg" style="min-height:100vh;">
   <nav class="navbar navbar-expand-lg" style="background:#1a002b;">
     <div class="container">
       <a class="navbar-brand" href="home.html" style="color:#c77dff; font-weight:bold;">SYB</a>
@@ -64,32 +65,38 @@
   </nav>
   <div class="container py-4">
     <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="card p-4 mb-4" style="background:#1a002b; border:none; box-shadow:0 0 32px #2d014d44;">
+      <div class="col-xl-11 col-12">
+        <div class="card p-4 mb-4 syb-agenda-card">
           <h2 class="mb-4" style="color:#c77dff;">Agenda Completa</h2>
           <div id="calendar"></div>
         </div>
-        <div class="card p-4 mb-4" style="background:#1a002b; border:none; box-shadow:0 0 32px #2d014d44;">
-          <h2 class="mb-4" style="color:#c77dff;">Adicionar Compromisso</h2>
+        <div class="card p-4 mb-4 syb-agenda-card">
+          <div class="d-flex align-items-center mb-4">
+  <h2 id="formTitulo" class="mb-0 me-auto" style="color:#c77dff;">Adicionar Compromisso</h2>
+  <div class="d-flex flex-row gap-2">
+    <button id="novoCompromissoBtn" type="button" class="btn btn-purple d-none">Novo Compromisso</button>
+    <button id="excluirCompromissoBtn" type="button" class="btn btn-danger d-none">Excluir Compromisso</button>
+  </div>
+</div>
           <form id="compromissoForm">
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label class="form-label">Título</label>
-                <input type="text" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="titulo" required>
+                <input type="text" class="form-control syb-agenda-input" id="titulo" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label class="form-label">Data</label>
-                <input type="date" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="data" required>
+                <input type="date" class="form-control syb-agenda-input" id="data" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label class="form-label">Hora</label>
-                <input type="time" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="hora" required>
+                <input type="time" class="form-control syb-agenda-input" id="hora" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label class="form-label">Descrição</label>
-                <input type="text" class="form-control" style="background:#2d014d; color:#fff; border:1px solid #3c176e;" id="descricao">
+                <input type="text" class="form-control syb-agenda-input" id="descricao">
               </div>
             </div>
             <button type="submit" class="btn btn-purple w-100">Salvar Compromisso</button>
@@ -118,9 +125,11 @@
     async function carregarCompromissosCalendar() {
       const res = await fetch(`http://localhost:3001/api/agenda/list/${usuario.id}`);
       const data = await res.json();
+console.log('LIST:', data);
       const events = data.map(c => ({
+        id: c.id, // garantir que o id está presente no evento
         title: c.titulo,
-        start: c.data + 'T' + c.hora,
+        start: c.hora ? c.data.split('T')[0] + 'T' + c.hora : c.data,
         description: c.descricao || ''
       }));
       const calendarEl = document.getElementById('calendar');
@@ -136,10 +145,26 @@
           },
           events,
           eventDidMount: function(info) {
-            info.el.title = info.event.extendedProps.description;
+            // Mostra título + descrição no tooltip ao passar o mouse
+            let tooltip = info.event.title;
+            if (info.event.extendedProps.description) {
+              tooltip += ' - ' + info.event.extendedProps.description;
+            }
+            info.el.title = tooltip;
           },
           eventClick: function(info) {
-            alert(info.event.title + (info.event.extendedProps.description ? '\n' + info.event.extendedProps.description : ''));
+            // Preenche o formulário com os dados do compromisso clicado
+            document.getElementById('titulo').value = info.event.title;
+            document.getElementById('descricao').value = info.event.extendedProps.description || '';
+            const start = new Date(info.event.start);
+            document.getElementById('data').value = start.toISOString().slice(0,10);
+            document.getElementById('hora').value = start.toTimeString().slice(0,5);
+            // Guarda o id do compromisso em edição
+            window.compromissoEditId = info.event.extendedProps.id;
+            document.getElementById('formTitulo').textContent = 'Editar Compromisso';
+            document.getElementById('novoCompromissoBtn').classList.remove('d-none');
+            document.getElementById('excluirCompromissoBtn').classList.remove('d-none');
+            document.getElementById('compromissoForm').scrollIntoView({ behavior: 'smooth' });
           },
           themeSystem: 'bootstrap5'
         });
@@ -157,12 +182,28 @@
       const data = document.getElementById('data').value;
       const hora = document.getElementById('hora').value;
       const descricao = document.getElementById('descricao').value;
-      const res = await fetch('http://localhost:3001/api/agenda/add', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ usuario_id: usuario.id, titulo, descricao, data, hora })
-      });
-      const result = await res.json();
+      let res, result;
+      if (window.compromissoEditId) {
+        // Editar compromisso existente
+        res = await fetch(`http://localhost:3001/api/agenda/edit/${window.compromissoEditId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ titulo, descricao, data, hora })
+        });
+        result = await res.json();
+        window.compromissoEditId = null;
+        document.getElementById('formTitulo').textContent = 'Adicionar Compromisso';
+        document.getElementById('novoCompromissoBtn').classList.add('d-none');
+        document.getElementById('excluirCompromissoBtn').classList.add('d-none');
+      } else {
+        // Novo compromisso
+        res = await fetch('http://localhost:3001/api/agenda/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ usuario_id: usuario.id, titulo, descricao, data, hora })
+        });
+        result = await res.json();
+      }
       if (res.ok) {
         document.getElementById('msg').innerHTML = `<span style='color:green;'>${result.message}</span>`;
         this.reset();

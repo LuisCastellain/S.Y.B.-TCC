@@ -1,69 +1,25 @@
 // Navbar Inteligente SYB - Alternância de tema e menu responsivo
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Theme Switch
-    const themeSwitch = document.getElementById('theme-switch');
+    // Garante que o tema escuro esteja aplicado e o logo correto seja exibido
     const body = document.body;
+    if (!body.classList.contains('dark-theme')) {
+        body.classList.add('dark-theme'); // Garante a classe, caso não esteja no HTML
+    }
+
     const logoDark = document.getElementById('logo-dark');
     const logoLight = document.getElementById('logo-light');
-
-    // Inicializa tema conforme preferência do usuário/sistema
-    function setTheme(dark) {
-        const head = document.head;
-        let darkCss = document.getElementById('theme-dark-css');
-        if (dark) {
-            body.classList.add('dark-theme');
-            // Carrega theme-dark.css se não estiver carregado
-            if (!darkCss) {
-                darkCss = document.createElement('link');
-                darkCss.rel = 'stylesheet';
-                darkCss.href = 'assets/css/theme-dark.css';
-                darkCss.id = 'theme-dark-css';
-                head.appendChild(darkCss);
-            }
-            if (logoDark && logoLight) {
-                logoDark.style.display = 'block'; // syb-principal
-                logoLight.style.display = 'none'; // syb-light
-            }
-        } else {
-            body.classList.remove('dark-theme');
-            // Remove theme-dark.css se estiver carregado
-            if (darkCss) {
-                darkCss.parentNode.removeChild(darkCss);
-            }
-            if (logoDark && logoLight) {
-                logoDark.style.display = 'none'; // syb-principal
-                logoLight.style.display = 'block'; // syb-light
-            }
-        }
+    if (logoDark && logoLight) {
+        logoDark.style.display = 'block'; // syb-principal (dark logo)
+        logoLight.style.display = 'none'; // syb-light (light logo)
     }
 
-    // Detecta preferência inicial
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    let userTheme = localStorage.getItem('syb-theme');
-    if (userTheme === 'dark' || (userTheme === null && prefersDark)) {
-        setTheme(true);
-        if(themeSwitch) themeSwitch.checked = true;
-    } else {
-        setTheme(false);
-        if(themeSwitch) themeSwitch.checked = false;
-    }
-
-    // Alternância manual
-    if (themeSwitch) {
-        themeSwitch.addEventListener('change', function(event) {
-            setTheme(this.checked);
-            localStorage.setItem('syb-theme', this.checked ? 'dark' : 'light');
-        });
-        // Bloquear propagation de click no label/spans
-        const themeLabel = themeSwitch.closest('label.theme');
-        if (themeLabel) {
-            themeLabel.addEventListener('click', function(e) {
-                // Só deixar passar se o alvo for o input
-                if (e.target !== themeSwitch) {
-                    e.preventDefault();
-                }
-            });
+    // Opcional: Remover o switch de tema do DOM se ele ainda existir
+    const themeSwitchElement = document.getElementById('theme-switch');
+    if (themeSwitchElement) {
+        const themeSwitchParent = themeSwitchElement.closest('label.theme') || themeSwitchElement.parentElement;
+        if (themeSwitchParent) {
+            themeSwitchParent.style.display = 'none'; // Esconde o switch
         }
     }
 

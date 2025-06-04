@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="dark-theme">
 <head>
+  <style>
+    :root {
+      --syb-hero-bg: linear-gradient(135deg, #120926 0%, #2e1457 35%, #532a71 70%, #8761a1 100%);
+    }
+  </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYB - Sistema de Apresentação</title>
     <!-- CSS principais -->
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/navbar-modern.css">
-    <link rel="stylesheet" href="assets/css/theme-switch.css">
-    <link rel="stylesheet" href="assets/css/theme-light.css" id="theme-light-css">
-    <!-- theme-dark.css será carregado dinamicamente -->
+    
+    
     <!-- Adicione outras folhas de estilo abaixo, se necessário -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,63 +25,52 @@
     <!-- Navbar Inteligente SYB -->
 
     <!-- HERO PRINCIPAL SYB -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <img src="syb-icons/syb-principal.png" alt="SYB Logo" class="hero-logo-dark">
-        <img src="syb-icons/syb-light.png" alt="SYB Logo" class="hero-logo-light">
-        <h1>S.Y.B. - Save Your Business</h1>
-        <div class="hero-slogan">Gestão descomplicada para quem faz acontecer.</div>
-      </div>
-    </section>
-
-<!-- Onda entre Hero e Sobre -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#fff" fill-opacity="1" d="M0,32L60,53.3C120,75,240,117,360,117.3C480,117,600,75,720,69.3C840,64,960,96,1080,106.7C1200,117,1320,107,1380,101.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
-</div>
-
-<!-- SOBRE O SYB - Inspirado na WACS -->
-<section class="syb-sobre-bloco">
-  <div class="syb-sobre-container">
-    <h2>Sobre o SYB</h2>
-    <p>
-      O SYB nasceu para transformar a vida do autônomo brasileiro! Nossa missão é simplificar a gestão financeira e potencializar sua autonomia com tecnologia de ponta.
-    </p>
+    <section id="home" class="hero-section">
+  <div class="hero-bg-animated"></div>
+  <div class="hero-content animate-fade-in">
+    <img src="syb-icons/syb-fundoFalso.png" alt="SYB Logo" class="hero-logo-dark" style="width: 260px; margin-bottom: 2rem; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.22));">
+    <h1 class="hero-title">S.Y.B. - Save Your Business</h1>
+    <div class="hero-highlight">A melhor experiência para você autônomo</div>
+    <div class="hero-desc">Inovação que dirige o futuro: transformando a autonomia em realidade</div>
+    <div class="hero-cta">Dirija seu negócio. Interaja com nossa IA e Controle suas finanças!</div>
+<div class="hero-cards-row">
+  <div class="hero-card destaque">
+    <i class="fas fa-user" aria-hidden="true"></i>
+    <span>Projeto feito<br>para autônomos!</span>
   </div>
-</section>
-
-<!-- Onda entre Sobre e Funcionalidades -->
-<div class="wave-divider">
-  <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-    <path fill="#fff" fill-opacity="1" d="M0,32L60,53.3C120,75,240,117,360,117.3C480,117,600,75,720,69.3C840,64,960,96,1080,106.7C1200,117,1320,107,1380,101.3L1440,96L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
-  </svg>
+  <div class="hero-card">
+    <i class="fas fa-robot" aria-hidden="true"></i>
+    <span>IA integrada ao<br>sistema!</span>
+  </div>
+  <div class="hero-card">
+    <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+    <span>Controle de<br>Finanças</span>
+  </div>
 </div>
 
-<!-- FUNCIONALIDADES EM CARDS -->
-<section class="syb-funcionalidades-bloco">
-  <h2>Funcionalidades</h2>
-  <div class="syb-cards-container">
-    <div class="syb-card">
-      <i class="fas fa-wallet"></i>
-      <h3>Controle Financeiro</h3>
-      <p>Gerencie entradas, saídas e tenha relatórios claros do seu negócio.</p>
-    </div>
-    <div class="syb-card">
-      <i class="fas fa-brain"></i>
-      <h3>IA Integrada</h3>
-      <p>Automatize tarefas e receba insights inteligentes para crescer.</p>
-    </div>
-    <div class="syb-card">
-      <i class="fas fa-user-shield"></i>
-      <h3>Segurança</h3>
-      <p>Seus dados protegidos com as melhores práticas do mercado.</p>
-    </div>
-    <div class="syb-card">
-      <i class="fas fa-user-tie"></i>
-      <h3>Feito para Autônomos</h3>
-      <p>Ferramentas pensadas para a rotina e o sucesso do trabalhador independente.</p>
-    </div>
+<h2>Funcionalidades</h2>
+<div class="syb-cards-container">
+  <div class="syb-card">
+    <i class="fas fa-calendar-check"></i>
+    <h3>Agenda de Compromisso</h3>
+    <p>Gerencie seus compromissos com praticidade diretamente no site</p>
+  </div>
+  <div class="syb-card">
+    <i class="fas fa-robot"></i>
+    <h3>Assistente Virtual</h3>
+    <p>Conte com uma assistente inteligente sempre disponível para facilitar tarefas, responder dúvidas e oferecer suporte em tempo real.</p>
+  </div>
+  <div class="syb-card">
+    <i class="fas fa-chart-line"></i>
+    <h3>Relatório Financeiro</h3>
+    <p>Informe seus dados financeiros e receba um relatório personalizado em alguns instantes, contando com todas as informações necessárias para o seu negócio.</p>
+  </div>
+  <div class="syb-card">
+    <i class="fas fa-bullseye"></i>
+    <h3>Metas Profissionais/Pessoais</h3>
+    <p>Insira suas metas como autônomo e tenha uma tabela organizada e sugestiva de todos os seus planos para o seu negócio</p>
+  </div>
+</div>
   </div>
 </section>
 
@@ -98,17 +91,6 @@
             <div class="navbar-actions">
                 <a href="login.html" class="navbar-btn navbar-login">Login</a>
                 <a href="cadastro.html" class="navbar-btn navbar-cadastro">Cadastro</a>
-                <div class="theme-toggle">
-                  <!-- Botão customizado Uiverse.io -->
-                  <label for="theme-switch" class="theme">
-                    <span class="theme__toggle-wrap">
-                      <input id="theme-switch" class="theme__toggle" type="checkbox" role="switch" name="theme" value="dark" aria-label="Alternar tema">
-                      <span class="theme__fill"></span>
-                      <span class="theme__icon">
-                        <span class="theme__icon-part"></span>
-                        <span class="theme__icon-part"></span>
-                        <span class="theme__icon-part"></span>
-                        <span class="theme__icon-part"></span>
                         <span class="theme__icon-part"></span>
                         <span class="theme__icon-part"></span>
                         <span class="theme__icon-part"></span>
@@ -130,23 +112,14 @@
         <button class="mobile-menu-close" id="menu-close" aria-label="Fechar menu">
             <i class="fas fa-times"></i>
         </button>
-        <ul class="mobile-links">
+                <ul class="mobile-links">
             <li><a href="#home" class="mobile-link">Home</a></li>
             <li><a href="#equipe" class="mobile-link">Equipe</a></li>
             <li><a href="#sobre" class="mobile-link">Sobre</a></li>
             <li><a href="#contato" class="mobile-link">Contato</a></li>
         </ul>
     </div>
-    <!-- Hero Section animada -->
-    <section id="home" class="hero-section">
-        <div class="hero-bg-animated"></div>
-        <div class="hero-content animate-fade-in">
-            <img src="syb-icons/syb-fundoFalso.png" alt="SYB Logo" class="hero-logo-dark" style="width: 140px; margin-bottom: 1.5rem; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));">
-            <img src="syb-icons/syb-fundoFalso.png" alt="SYB Logo" class="hero-logo-light" style="width: 140px; margin-bottom: 1.5rem; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));">
-            <h1>S.Y.B. - Save Your Business</h1>
-            <p class="hero-slogan">Gestão descomplicada para quem faz acontecer.</p>
-        </div>
-    </section>
+    
     <!-- Scripts JS -->
     <script src="assets/js/navbar-modern.js"></script>
     <!-- Adicione outros scripts JS abaixo, se necessário -->

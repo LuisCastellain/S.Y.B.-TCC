@@ -31,4 +31,30 @@ router.get('/list/:usuario_id', async (req, res) => {
   }
 });
 
+// Editar compromisso
+router.put('/edit/:id', async (req, res) => {
+  const { id } = req.params;
+  const { titulo, descricao, data, hora } = req.body;
+  try {
+    await pool.query(
+      'UPDATE compromissos SET titulo = ?, descricao = ?, data = ?, hora = ? WHERE id = ?',
+      [titulo, descricao, data, hora, id]
+    );
+    res.json({ message: 'Compromisso atualizado com sucesso!' });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao atualizar compromisso.' });
+  }
+});
+
+// Excluir compromisso
+router.delete('/delete/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await pool.query('DELETE FROM compromissos WHERE id = ?', [id]);
+    res.json({ message: 'Compromisso excluído com sucesso!' });
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao excluir compromisso.' });
+  }
+});
+
 export default router;

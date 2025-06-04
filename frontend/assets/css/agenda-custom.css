@@ -1,0 +1,111 @@
+/* Estilos customizados para agenda SYB - tema escuro elegante */
+
+/* Botões de ação lado a lado no topo do formulário */
+#novoCompromissoBtn, #excluirCompromissoBtn {
+  min-width: 170px;
+  margin-left: 0;
+  margin-right: 0;
+}
+.d-flex.justify-content-between.align-items-center.mb-4 {
+  gap: 12px;
+}
+
+/* Botão Excluir vermelho escuro */
+#excluirCompromissoBtn.btn-danger {
+  background-color: #611313 !important;
+  border-color: #611313 !important;
+}
+#excluirCompromissoBtn.btn-danger:hover, #excluirCompromissoBtn.btn-danger:focus {
+  background-color: #3d0d0d !important;
+  border-color: #3d0d0d !important;
+}
+#excluirCompromissoBtn.btn-danger:hover, #excluirCompromissoBtn.btn-danger:focus {
+  background-color: #7a2323 !important;
+  border-color: #7a2323 !important;
+}
+
+/* FullCalendar: dias da semana e números do mês em preto */
+.fc .fc-col-header-cell-cushion, /* Dias da semana */
+.fc .fc-daygrid-day-number { /* Números dos dias */
+  color: #222 !important;
+}
+
+.syb-agenda-bg {
+  background: var(--syb-noturno-absoluto, #1e1336) !important;
+  min-height: 700vh;
+}
+
+.syb-agenda-card {
+  background: #EDE1F7 !important;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(174, 107, 219, 0.10);
+  border: none;
+}
+
+.syb-agenda-card h2, .syb-agenda-card h4 {
+  color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  font-weight: bold;
+}
+
+.syb-agenda-card .form-label {
+  color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  font-weight: 600;
+}
+
+.syb-agenda-card .btn-purple {
+  background: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  color: #fff !important;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+}
+.syb-agenda-card .btn-purple:hover {
+  background: var(--syb-ameixa-intensa, #532a71) !important;
+}
+
+.syb-agenda-input {
+  background: #C9A8E4 !important;
+  color: var(--syb-ameixa-intensa, #532a71) !important;
+  border: 1.5px solid var(--syb-lilas-suave, #a890c5) !important;
+  border-radius: 0.5rem;
+  font-size: 1.05rem;
+  padding: 0.7rem 1rem;
+  box-shadow: none;
+}
+
+.syb-agenda-input:focus {
+  background: var(--syb-neve-lilas, #f4fafa) !important;
+  color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  border-color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  outline: none;
+}
+
+.syb-agenda-input:focus {
+  background: var(--syb-cinza-chumbo, #2a223f) !important;
+  color: var(--syb-neve-lilas, #f4fafa) !important;
+  border-color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  outline: none;
+}
+
+.syb-agenda-card h2, .syb-agenda-card h4 {
+  color: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  font-weight: bold;
+}
+
+.syb-agenda-card .form-label {
+  color: var(--syb-lilas-suave, #a890c5) !important;
+  font-weight: 600;
+}
+
+.syb-agenda-card .btn-purple {
+  background: var(--syb-roxo-vibrante, #ae6bdb) !important;
+  color: #fff !important;
+  border: none;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+}
+.syb-agenda-card .btn-purple:hover {
+  background: var(--syb-ameixa-intensa, #532a71) !important;
+}

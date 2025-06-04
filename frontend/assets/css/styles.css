@@ -1,29 +1,170 @@
 :root {
   --syb-roxo-base: #8761a1;
   --syb-lilas-suave: #a890c5;
-  --syb-roxo-vibrante: #ae6bdb;
+  --syb-roxo-vibrante: #ae6bdb; /* Roxo vibrante para botões e destaques */
+  --syb-roxo-vibrante-rgb: 174, 107, 219; /* Versão RGB para box-shadow com alfa */
   --syb-ameixa-intensa: #532a71;
-  --syb-noturno-absoluto: #1e1336;
-  --syb-neve-lilas: #f4fafa;
-  --syb-cinza-chumbo: #2a223f;
+  --syb-noturno-absoluto: #1e1336; /* Azul/Roxo bem escuro para fundos de card */
+  --syb-neve-lilas: #f4fafa; /* Branco/Lilás muito claro para textos em fundos escuros */
+  --syb-cinza-chumbo: #2a223f; /* Cinza escuro arroxeado para inputs ou bordas */
+  --syb-hero-bg: linear-gradient(135deg, #120926 0%, #2e1457 35%, #532a71 70%, #8761a1 100%);
+  --login-card-bg: var(--syb-noturno-absoluto);
+  --login-input-bg: var(--syb-cinza-chumbo);
+  --login-text-primary: var(--syb-neve-lilas);
+  --login-text-secondary: var(--syb-lilas-suave);
+  --login-link-color: var(--syb-roxo-vibrante);
+  --login-button-bg: var(--syb-roxo-vibrante);
+  --login-button-text: var(--syb-neve-lilas);
+
 }
 
 /* Hero Section SYB - Estrutura e contraste garantido */
 .hero-section {
-    margin-top: 64px; /* altura da navbar fixa */
-    min-height: 60vh;
+    background: var(--syb-hero-bg);
+    color: var(--syb-neve-lilas);
+    margin-top: 10px;
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: var(--syb-roxo-base);
-    color: var(--syb-neve-lilas);
+    justify-content: flex-start;
     text-align: center;
     position: relative;
     overflow: hidden;
+    padding-top: 0.5rem;
 }
+
+.hero-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 1.3rem;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+.hero-highlight {
+    display: inline-block;
+    background: #1a102d;
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 12px rgba(30,19,54,0.14);
+    letter-spacing: 0.01em;
+}
+
+.hero-desc {
+    font-size: 1.5rem;
+    color: #f3eafd;
+    margin-bottom: 2.1rem;
+    margin-top: 0.6rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-cta {
+    font-size: 2.1rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 2.2rem;
+    margin-top: 0.8rem;
+    letter-spacing: 0.01em;
+    text-shadow: 0 2px 8px rgba(30,19,54,0.10);
+}
+
+@media (max-width: 700px) {
+    .hero-title {
+        font-size: 1.3rem;
+    }
+    .hero-highlight {
+        font-size: 1.1rem;
+        padding: 0.4rem 0.7rem;
+    }
+    .hero-desc {
+        font-size: 1.1rem;
+    }
+    .hero-cta {
+        font-size: 1.35rem;
+    }
+    .hero-section {
+        padding-top: 1.2rem;
+        min-height: 70vh;
+    }
+    .hero-cards-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+    .hero-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+    }
+    .hero-card i {
+        font-size: 1.6rem;
+        margin-right: 0.7rem;
+    }
+    .hero-card span {
+        font-size: 1rem;
+    }
+}
+
+.hero-cards-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1.3rem;
+    margin-bottom: 0.3rem;
+    flex-wrap: wrap;
+}
+
+.hero-card {
+    background: #fff;
+    border-radius: 9px;
+    box-shadow: 0 2px 12px rgba(30,19,54,0.10);
+    display: flex;
+    align-items: center;
+    padding: 1.1rem 2.1rem;
+    min-width: 220px;
+    max-width: 250px;
+    font-size: 1.08rem;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #180d2c;
+    font-weight: 500;
+    transition: transform 0.18s, box-shadow 0.18s;
+    margin-bottom: 0.2rem;
+    border: none;
+    gap: 0.9rem;
+}
+.hero-card i {
+    font-size: 2rem;
+    color: #ae6bdb;
+    margin-right: 0.9rem;
+}
+.hero-card span {
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.3;
+    text-align: left;
+    letter-spacing: 0.01em;
+}
+.hero-card.destaque {
+    background: #fff;
+    color: #180d2c;
+    font-weight: 600;
+}
+.hero-card:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(174,107,219,0.13);
+}
+
 body.dark-theme .hero-section {
-    background: linear-gradient(135deg, var(--syb-noturno-absoluto) 0%, var(--syb-ameixa-intensa) 100%);
+    background: var(--syb-hero-bg) !important;
     color: var(--syb-neve-lilas);
 }
 body {
@@ -39,13 +180,17 @@ body.dark-theme {
     z-index: 2;
     position: relative;
     animation: fadeInUp 1.2s cubic-bezier(.7,-0.01,.4,1);
+    padding-top: 6rem;
 }
+
 .hero-section img {
     width: 120px;
     max-width: 40vw;
     margin-bottom: 1.5rem;
     filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));
+    margin-top: 1.3rem;
 }
+
 .hero-logo-dark,
 .hero-logo-light {
     display: none;
@@ -56,26 +201,19 @@ body.dark-theme .hero-logo-dark {
 body.dark-theme .hero-logo-light {
     display: none;
 }
-body:not(.dark-theme) .hero-logo-dark {
-    display: none;
-}
-body:not(.dark-theme) .hero-logo-light {
-    display: block;
-}
-
 
 .hero-section h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     font-weight: 700;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.4rem 0;
     color: #fff;
     letter-spacing: 0.04em;
 }
 .hero-slogan {
-    font-size: 1.15rem;
+    font-size: 1.35rem;
     font-weight: 400;
     color: #f6f6f6;
-    margin-bottom: 0;
+    margin-bottom: 1.2rem;
 }
 @media (max-width: 700px) {
     .hero-section h1 {
@@ -106,23 +244,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 body {
     font-family: 'Inter', Arial, sans-serif;
+    color: var(--syb-neve-lilas);
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: var(--syb-noturno-absoluto); /* Fundo padrão escuro para o site */
 }
 
 /* --- Blocos inspirados no layout WACS --- */
 .syb-sobre-bloco {
   background: linear-gradient(135deg, #ae6bdb 0%, #532a71 100%);
   color: #fff;
-  padding: 3rem 0 2rem 0;
+  padding: 3rem 1rem;
   text-align: center;
 }
 .syb-sobre-container {
   max-width: 700px;
   margin: 0 auto;
+  padding: 0 1rem;
 }
 .syb-sobre-bloco h2 {
   font-size: 2.4rem;
   margin-bottom: 1rem;
-  font-weight: 900;
 }
 .syb-sobre-bloco p {
   font-size: 1.15rem;
@@ -131,58 +274,102 @@ body {
 }
 
 .syb-funcionalidades-bloco {
-  background: #fff;
-  color: #532a71;
-  padding: 3rem 0 2rem 0;
+  background: var(--syb-roxo-base);
+  color: #fff;
+  padding: 3rem 1rem;
   text-align: center;
 }
-.syb-funcionalidades-bloco h2 {
+.syb-funcionalidades-bloco.hero-functionalities-inline {
+  background: var(--syb-roxo-base);
+  box-shadow: none;
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.syb-funcionalidades-bloco h2, .hero-content > h2 {
   font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 900;
+  color: #fff;
+  margin-bottom: 1.5rem;
 }
+/* --- Fim dos blocos WACS --- */
+
+/* Estilos para a seção de Funcionalidades (SYB Cards) */
 .syb-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem; /* Espaçamento entre os cards */
+    padding: 2rem 1rem; /* Espaçamento interno da seção */
+    max-width: 1200px; /* Limita a largura máxima do container */
+    margin: 2rem auto; /* Centraliza o container e adiciona margem superior/inferior */
+    box-sizing: border-box;
 }
+
 .syb-card {
-  background: #f6f6f6;
-  border-radius: 1.2rem;
-  box-shadow: 0 4px 24px rgba(80,0,150,0.08);
-  padding: 2rem 1.5rem;
-  max-width: 260px;
-  min-width: 220px;
-  text-align: center;
-  transition: transform 0.22s, box-shadow 0.22s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.syb-card i {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #ae6bdb;
-}
-.syb-card h3 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-.syb-card p {
-  font-size: 1rem;
-  color: #532a71;
-}
-.syb-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px rgba(80,0,150,0.16);
-}
-@media (max-width: 900px) {
-  .syb-cards-container {
+    background: var(--syb-neve-lilas); /* Fundo branco do tema */
+    border-radius: 12px;
+    padding: 1.5rem; /* Padding ajustado */
+    width: 100%;
+    max-width: 265px; /* Aumentado para ocupar mais espaço, mantendo 4 por linha */
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--syb-noturno-absoluto); /* Cor de texto padrão escura */
+    border: 1px solid #e0e0e0; /* Borda sutil para card claro */
+    box-shadow: 0 4px 15px rgba(30, 19, 54, 0.08); /* Sombra sutil */
+    transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+    display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    text-align: center;
+    gap: 0.7rem; /* Espaçamento interno ajustado */
+    box-sizing: border-box;
+}
+
+.syb-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(30, 19, 54, 0.12);
+}
+
+.syb-card i {
+    font-size: 2.5rem; /* Tamanho do ícone ajustado */
+    color: var(--syb-roxo-vibrante); /* Mantém cor vibrante */
+    margin-bottom: 0.6rem;
+}
+
+.syb-card h3 {
+    font-size: 1.15rem; /* Tamanho do título ajustado */
+    font-weight: 700; /* Mais peso para destaque */
+    color: var(--syb-noturno-absoluto); /* Cor escura para o título */
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+}
+
+.syb-card p {
+    font-size: 0.85rem; /* Tamanho do texto descritivo ajustado */
+    font-weight: 400;
+    line-height: 1.5;
+    color: #532a71; /* Tom de roxo escuro para o texto, como estava antes em outros cards claros */
+    flex-grow: 1;
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 600px) { /* Ajustado o breakpoint para melhor responsividade dos cards */
+    .syb-cards-container {
+        padding: 1.5rem 0.5rem;
+    }
+    .syb-card {
+        max-width: 100%; /* Cards ocupam mais largura em telas pequenas */
+        min-height: auto; /* Altura automática */
+        padding: 1.5rem;
+    }
+    .syb-card i {
+        font-size: 2.5rem;
+    }
+    .syb-card h3 {
+        font-size: 1.15rem;
+    }
+    .syb-card p {
+        font-size: 0.85rem;
+    }
 }
 
 /* --- Divisor de onda entre seções --- */
@@ -198,5 +385,248 @@ body {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* --- Estilos da Nova Página de Login --- */
+.syb-login-page-body {
+  background-color: var(--syb-noturno-absoluto) !important;
+  color: var(--syb-neve-lilas);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-syb-login {
+  background-color: var(--syb-noturno-absoluto) !important;
+  border-bottom: 1px solid var(--syb-cinza-chumbo); /* Opcional: separador sutil */
+}
+
+/* Estilo da logo na navbar já está inline no HTML, mas pode ser movido para cá se preferir */
+/* .navbar-syb-login .navbar-brand img {
+  height: 30px; 
+  margin-right: 10px;
+} */
+
+.navbar-syb-login .navbar-brand,
+.navbar-syb-login .nav-link {
+  color: var(--syb-neve-lilas) !important;
+}
+
+.navbar-syb-login .nav-link:hover,
+.navbar-syb-login .navbar-brand:hover {
+  color: var(--syb-lilas-suave) !important;
+}
+
+/* O ícone do navbar-toggler já foi estilizado inline no HTML para melhor visibilidade em fundo escuro */
+/* Se precisar de mais ajustes para o formulário centralizado: */
+.syb-login-page-body .container {
+  flex-grow: 1; /* Faz o container do formulário ocupar o espaço restante */
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o card do formulário */
+  justify-content: center; /* Centraliza horizontalmente o card do formulário */
+}
+
+/* Styles for the login/register card */
+
+.login-card-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-height: 96px;
+  margin-top: -1.2rem;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
+}
+
+.login-card-subtitle {
+  color: var(--syb-lilas-suave);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 2.2rem;
+  margin-top: -0.5rem;
+}
+
+.syb-login-card {
+  background-color: var(--syb-cinza-chumbo);
+  color: var(--syb-neve-lilas);
+  border: 1px solid var(--syb-ameixa-intensa);
+  border-radius: 0.75rem;
+  width: 100%;
+  max-width: 408px;
+  min-height: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.syb-login-card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 2.5rem 2rem;
+}
+
+.syb-login-card .card-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  margin-bottom: 1.1rem;
+  margin-top: 0.2rem;
+  color: var(--syb-roxo-vibrante);
+  letter-spacing: 0.5px;
+} 
+
+.syb-login-card .form-label {
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0.3rem;
+  color: var(--syb-lilas-suave);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.syb-login-card .form-control {
+  height: 3rem;
+  font-size: 1.15rem;
+  padding: 0.75rem 1.2rem;
+  margin-bottom: 1.7rem;
+  background-color: var(--syb-noturno-absoluto);
+  color: var(--syb-neve-lilas);
+  border: 1.5px solid var(--syb-lilas-escuro);
+  border-radius: 0.5rem;
+  box-shadow: none;
+}
+
+.syb-login-card .btn-primary {
+  height: 3rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  margin-bottom: 1.2rem;
+  background-color: var(--syb-roxo-vibrante);
+  border: 1.5px solid var(--syb-roxo-vibrante);
+  transition: background 0.2s, border 0.2s;
+}
+
+.syb-divider {
+  text-align: center;
+  position: relative;
+  margin: 2rem 0 1.5rem 0;
+}
+.syb-divider span {
+  background: var(--syb-cinza-chumbo);
+  color: var(--syb-lilas-suave);
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+}
+.syb-divider:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--syb-lilas-escuro);
+  z-index: 0;
+}
+
+.syb-social-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: none;
+  border: none;
+  transition: box-shadow 0.2s, filter 0.2s;
+  background: var(--syb-noturno-absoluto);
+  color: #fff;
+}
+.syb-social-google {
+  background: #ea4335;
+  color: #fff;
+}
+.syb-social-facebook {
+  background: #4267B2;
+  color: #fff;
+}
+.syb-social-btn:hover, .syb-social-btn:focus {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 8px rgba(80,0,80,0.12);
+}
+
+.syb-link-forgot {
+  color: var(--syb-lilas-suave);
+  font-size: 0.98rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.syb-link-forgot:hover {
+  color: var(--syb-roxo-vibrante);
+  text-decoration: underline;
+}
+
+.syb-login-card .form-check-input {
+  background-color: var(--syb-noturno-absoluto);
+  border: 1.5px solid var(--syb-lilas-escuro);
+}
+.syb-login-card .form-check-label {
+  color: var(--syb-neve-lilas);
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+.syb-login-card .btn-primary:hover, .syb-login-card .btn-primary:focus {
+  background-color: var(--syb-ameixa-intensa);
+  border-color: var(--syb-ameixa-intensa);
+}
+
+
+
+.syb-login-card .form-control::placeholder {
+  color: var(--syb-lilas-suave);
+  opacity: 0.7;
+}
+
+.syb-login-card .form-control:focus {
+  background-color: var(--syb-noturno-absoluto);
+  color: var(--syb-neve-lilas);
+  border-color: var(--syb-roxo-vibrante);
+  box-shadow: 0 0 0 0.25rem rgba(var(--syb-roxo-vibrante-rgb), 0.35);
+}
+
+.syb-login-card .btn-primary {
+  background-color: var(--syb-roxo-vibrante);
+  border-color: var(--syb-roxo-vibrante);
+  color: var(--syb-neve-lilas);
+  font-weight: 600;
+}
+
+.syb-login-card .btn-primary:hover {
+  background-color: var(--syb-ameixa-intensa); /* Darker shade for hover */
+  border-color: var(--syb-ameixa-intensa);
+}
+
+.syb-login-card .text-center a {
+  color: var(--syb-roxo-vibrante);
+  text-decoration: none;
+}
+
+.syb-login-card .text-center a:hover {
+  text-decoration: underline;
+  color: var(--syb-lilas-suave);
+}
+
+/* Ensure message area is also styled for dark theme if it appears */
+.syb-login-card #formMessage.text-danger {
+  color: #ff7b7b !important; /* Light red for errors */
+}
+
+.syb-login-card #formMessage.text-success {
+  color: #7bffb4 !important; /* Light green for success */
 }
 
