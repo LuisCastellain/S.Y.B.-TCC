@@ -48,6 +48,7 @@
       overflow-y: auto;
     }
   </style>
+  <link rel="stylesheet" href="assets/css/syb-theme.css">
 </head>
 <body class="syb-agenda-bg" style="min-height:100vh;">
   <nav class="navbar navbar-expand-lg" style="background:#1a002b;">
@@ -160,7 +161,7 @@ console.log('LIST:', data);
             document.getElementById('data').value = start.toISOString().slice(0,10);
             document.getElementById('hora').value = start.toTimeString().slice(0,5);
             // Guarda o id do compromisso em edição
-            window.compromissoEditId = info.event.extendedProps.id;
+            window.compromissoEditId = info.event.id;
             document.getElementById('formTitulo').textContent = 'Editar Compromisso';
             document.getElementById('novoCompromissoBtn').classList.remove('d-none');
             document.getElementById('excluirCompromissoBtn').classList.remove('d-none');
@@ -212,6 +213,81 @@ console.log('LIST:', data);
         document.getElementById('msg').innerHTML = `<span style='color:red;'>${result.error}</span>`;
       }
     };
-  </script>
+  // Handler do botão Excluir Compromisso
+  document.getElementById('excluirCompromissoBtn').onclick = function() {
+    if (!window.compromissoEditId) return;
+    const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+    modal.show();
+  };
+
+  document.getElementById('confirmDeleteBtn').onclick = async function() {
+    if (!window.compromissoEditId) return;
+    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+    modal.hide();
+    const res = await fetch(`http://localhost:3001/api/agenda/delete/${window.compromissoEditId}`, {
+      method: 'DELETE'
+    });
+    const result = await res.json();
+    if (res.ok) {
+      document.getElementById('msg').innerHTML = `<span style='color:green;'>${result.message}</span>`;
+      document.getElementById('compromissoForm').reset();
+      document.getElementById('formTitulo').textContent = 'Adicionar Compromisso';
+      document.getElementById('novoCompromissoBtn').classList.add('d-none');
+      document.getElementById('excluirCompromissoBtn').classList.add('d-none');
+      window.compromissoEditId = null;
+      carregarCompromissosCalendar();
+    } else {
+      document.getElementById('msg').innerHTML = `<span style='color:red;'>${result.error}</span>`;
+    }
+  };
+</script>
+
+<!-- Modal de confirmação de exclusão -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Excluir Compromisso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir este compromisso?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Handler do botão Excluir Compromisso
+  document.getElementById('excluirCompromissoBtn').onclick = function() {
+    if (!window.compromissoEditId) return;
+    const modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+    modal.show();
+  };
+  document.getElementById('confirmDeleteBtn').onclick = async function() {
+    if (!window.compromissoEditId) return;
+    const modal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+    modal.hide();
+    const res = await fetch(`http://localhost:3001/api/agenda/delete/${window.compromissoEditId}`, {
+      method: 'DELETE'
+    });
+    const result = await res.json();
+    if (res.ok) {
+      document.getElementById('msg').innerHTML = `<span style='color:green;'>${result.message}</span>`;
+      document.getElementById('compromissoForm').reset();
+      document.getElementById('formTitulo').textContent = 'Adicionar Compromisso';
+      document.getElementById('novoCompromissoBtn').classList.add('d-none');
+      document.getElementById('excluirCompromissoBtn').classList.add('d-none');
+      window.compromissoEditId = null;
+      carregarCompromissosCalendar();
+    } else {
+      document.getElementById('msg').innerHTML = `<span style='color:red;'>${result.error}</span>`;
+    }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

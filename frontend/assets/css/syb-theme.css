@@ -1,0 +1,150 @@
+/* SYB Modern Purple Theme - Global */
+:root {
+  --syb-bg-main: #1a002b;
+  --syb-bg-gradient: linear-gradient(120deg, #2d014d 0%, #1a002b 100%);
+  --syb-card-bg: #22113a;
+  --syb-purple-main: #a259f7;
+  --syb-purple-dark: #7b2ff2;
+  --syb-purple-light: #c77dff;
+  --syb-lilac: #bb90da;
+  --syb-vibrant: #c77dff;
+  --syb-blue-accent: #3d1a72;
+  --syb-gray-light: #31204a;
+  --syb-gray: #b2a7c8;
+  --syb-danger: #7D0707;
+  --syb-text-main: #fff;
+  --syb-text-muted: #bba7d7;
+}
+
+  --syb-bg-main: #f8f6fc;
+  --syb-card-bg: #fff;
+  --syb-purple-main: #7b2ff2;
+  --syb-purple-dark: #532a71;
+  --syb-purple-light: #c77dff;
+  --syb-lilac: #bb90da;
+  --syb-vibrant: #a259f7;
+  --syb-blue-accent: #7ed6fb;
+  --syb-gray-light: #ede9f5;
+  --syb-gray: #b2a7c8;
+  --syb-danger: #7D0707;
+}
+
+body, .syb-agenda-bg {
+  background: var(--syb-bg-gradient) !important;
+  min-height: 100vh;
+  color: var(--syb-text-main);
+}
+
+.card, .syb-agenda-card {
+  background: var(--syb-card-bg) !important;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(120, 46, 220, 0.18);
+  border: none;
+  color: var(--syb-text-main);
+}
+
+h2, h4, .form-label {
+  color: var(--syb-purple-main) !important;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.syb-agenda-input, .form-control {
+  border-radius: 10px;
+  border: 1.5px solid var(--syb-purple-main);
+  background: #2d014d;
+  color: var(--syb-text-main);
+}
+.syb-agenda-input:focus, .form-control:focus {
+  border-color: var(--syb-purple-light);
+  box-shadow: 0 0 0 2px var(--syb-purple-main)55;
+  background: #3d1a72;
+  color: var(--syb-text-main);
+}
+
+.btn-purple {
+  background: linear-gradient(90deg, var(--syb-purple-main) 60%, var(--syb-purple-dark));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px 0 #2d014d44;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-purple:hover {
+  background: linear-gradient(90deg, #2d014d, var(--syb-purple-main));
+  color: #fff;
+  box-shadow: 0 4px 16px 0 #2d014d55;
+}
+
+.btn-danger, .syb-btn-danger {
+  background: var(--syb-danger) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px 0 #2d014d33;
+}
+.btn-danger:hover, .syb-btn-danger:hover {
+  background: #530404 !important;
+}
+
+.btn-secondary {
+  background: var(--syb-purple-dark) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 2px 10px 0 #2d014d33;
+}
+.btn-secondary:hover {
+  background: var(--syb-purple-main) !important;
+  color: #fff !important;
+}
+
+.reminder {
+  background: linear-gradient(90deg, #2d014d 60%, var(--syb-purple-dark) 100%);
+  color: var(--syb-text-main);
+  border-radius: 12px;
+  padding: 10px 18px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  border-left: 6px solid var(--syb-purple-main);
+  box-shadow: 0 2px 12px 0 #0004;
+}
+
+#confirmDeleteModal .modal-content {
+  background: #2d014d;
+  color: #fff;
+}
+#confirmDeleteModal .modal-header, #confirmDeleteModal .modal-footer {
+  border: none;
+}
+#confirmDeleteModal .btn.btn-secondary {
+  background: var(--syb-purple-dark);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+#confirmDeleteModal .btn.btn-secondary:hover {
+  background: var(--syb-purple-main);
+  color: #fff;
+}
+#confirmDeleteModal .btn.btn-danger {
+  background: var(--syb-danger);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+}
+#confirmDeleteModal .btn.btn-danger:hover {
+  background: #530404;
+  color: #fff;
+}
+
+/* FullCalendar: dias da semana e números do mês em preto */
+.fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number {
+  color: var(--syb-purple-light) !important;
+}
+.fc .fc-toolbar-title {
+  color: var(--syb-purple-main) !important;
+}

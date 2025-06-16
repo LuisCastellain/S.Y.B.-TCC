@@ -24,6 +24,150 @@
   border-color: #7a2323 !important;
 }
 
+/* SYB Modern Purple Theme */
+:root {
+  --syb-bg-main: #f8f6fc;
+  --syb-card-bg: #fff;
+  --syb-purple-main: #7b2ff2;
+  --syb-purple-dark: #532a71;
+  --syb-purple-light: #c77dff;
+  --syb-lilac: #bb90da;
+  --syb-vibrant: #a259f7;
+  --syb-blue-accent: #7ed6fb;
+  --syb-gray-light: #ede9f5;
+  --syb-gray: #b2a7c8;
+  --syb-danger: #7D0707;
+}
+
+body, .syb-agenda-bg {
+  background: linear-gradient(120deg, var(--syb-purple-light) 0%, var(--syb-bg-main) 100%) !important;
+  min-height: 100vh;
+}
+
+.card, .syb-agenda-card {
+  background: var(--syb-card-bg) !important;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(120, 46, 220, 0.10);
+  border: none;
+}
+
+h2, h4, .form-label {
+  color: var(--syb-purple-main) !important;
+  font-weight: bold;
+}
+
+.syb-agenda-input, .form-control {
+  border-radius: 10px;
+  border: 1.5px solid var(--syb-purple-light);
+  background: var(--syb-gray-light);
+  color: var(--syb-purple-dark);
+}
+.syb-agenda-input:focus, .form-control:focus {
+  border-color: var(--syb-purple-main);
+  box-shadow: 0 0 0 2px var(--syb-purple-light)44;
+}
+
+.btn-purple {
+  background: linear-gradient(90deg, var(--syb-purple-main) 60%, var(--syb-purple-light));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-purple:hover {
+  background: linear-gradient(90deg, var(--syb-purple-dark), var(--syb-purple-main));
+  color: #fff;
+}
+
+.btn-danger, .syb-btn-danger {
+  background: var(--syb-danger) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+}
+.btn-danger:hover, .syb-btn-danger:hover {
+  background: #530404 !important;
+}
+
+.btn-secondary {
+  background: var(--syb-lilac) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 10px;
+}
+.btn-secondary:hover {
+  background: var(--syb-purple-main) !important;
+}
+
+.reminder {
+  background: linear-gradient(90deg, var(--syb-purple-light) 60%, var(--syb-blue-accent) 100%);
+  color: var(--syb-purple-dark);
+  border-radius: 12px;
+  padding: 10px 18px;
+  margin-bottom: 10px;
+  font-weight: 500;
+  border-left: 6px solid var(--syb-purple-main);
+  box-shadow: 0 2px 12px 0 rgba(120, 46, 220, 0.07);
+}
+
+#confirmDeleteModal .modal-content {
+  background: var(--syb-lilac);
+}
+#confirmDeleteModal .modal-header, #confirmDeleteModal .modal-footer {
+  border: none;
+}
+#confirmDeleteModal .btn.btn-secondary {
+  background: var(--syb-purple-light);
+  border: none;
+  color: #fff;
+}
+#confirmDeleteModal .btn.btn-secondary:hover {
+  background: var(--syb-purple-main);
+}
+#confirmDeleteModal .btn.btn-danger {
+  background: var(--syb-danger);
+  border: none;
+  color: #fff;
+}
+#confirmDeleteModal .btn.btn-danger:hover {
+  background: #530404;
+}
+
+/* FullCalendar: dias da semana e números do mês em preto */
+.fc .fc-col-header-cell-cushion, .fc .fc-daygrid-day-number {
+  color: var(--syb-purple-dark) !important;
+}
+.fc .fc-toolbar-title {
+  color: var(--syb-purple-main) !important;
+}
+
+
+/* Modal de exclusão customizado */
+#confirmDeleteModal .modal-content {
+  background: #ffff ;
+}
+#confirmDeleteModal .modal-header,
+#confirmDeleteModal .modal-footer {
+  border: none;
+}
+#confirmDeleteModal .btn.btn-secondary {
+  background: #aa66b4;
+  border: none;
+  color: #fff;
+}
+#confirmDeleteModal .btn.btn-secondary:hover {
+  background: #805F98;
+}
+#confirmDeleteModal .btn.btn-danger {
+  background: #7D0707;
+  border: none;
+  color: #fff;
+}
+#confirmDeleteModal .btn.btn-danger:hover {
+  background: #530404;
+}
+
 /* FullCalendar: dias da semana e números do mês em preto */
 .fc .fc-col-header-cell-cushion, /* Dias da semana */
 .fc .fc-daygrid-day-number { /* Números dos dias */
